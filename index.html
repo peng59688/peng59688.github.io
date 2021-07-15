@@ -76,22 +76,22 @@
                       "translate(" + margin.left + "," + margin.top + ")");
             
             //Read the data
-            d3.csv("covid_us_ind_cases.csv", function(data) {
+            d3.csv("https://raw.githubusercontent.com/peng59688/peng59688.github.io/master/covid_us_ind_cases_columns.csv", function(data) {
             
                 // List of groups (here I have one group per column)
-                var allGroup = ["valueA", "valueB", "valueC"]
+                var allGroup = ["us_new_cases", "ind_new_cases"]
             
                 // Reformat the data: we need an array of arrays of {x, y} tuples
                 var dataReady = allGroup.map( function(grpName) { // .map allows to do something for each element of the list
                   return {
                     name: grpName,
                     values: data.map(function(d) {
-                      return {time: d.time, value: +d[grpName]};
+                      return {date:  d3.timeParse("%m/%d/%Y")(d.date), value: +d[grpName]};
                     })
                   };
                 });
                 // I strongly advise to have a look to dataReady with
-                console.log(dataReady)
+                //console.log(dataReady);
             
                 // A color scale: one color for each group
                 var myColor = d3.scaleOrdinal()
@@ -99,23 +99,30 @@
                   .range(d3.schemeSet2);
             
                 // Add X axis --> it is a date format
-                var x = d3.scaleLinear()
-                  .domain([0,10])
-                  .range([ 0, width ]);
-                svg.append("g")
-                  .attr("transform", "translate(0," + height + ")")
-                  .call(d3.axisBottom(x));
-            
+                  var x = d3.scaleTime()
+                    .domain(d3.extent(data, function(d) { 
+                    return d3.timeParse("%m/%d/%Y")(d.date); }))
+                    .range([ 0, width ]);
+                  svg.append("g")
+                    .attr("transform", "translate(0," + height + ")")
+                    .call(
+                      d3.axisBottom(x)
+                      .ticks(d3.timeDay.every(120))
+                      .tickFormat(d3.timeFormat('%b-%Y'))
+                    );
+
+
+
                 // Add Y axis
                 var y = d3.scaleLinear()
-                  .domain( [0,20])
+                  .domain( [0,500000])
                   .range([ height, 0 ]);
                 svg.append("g")
                   .call(d3.axisLeft(y));
             
                 // Add the lines
                 var line = d3.line()
-                  .x(function(d) { return x(+d.time) })
+                  .x(function(d) { return x(+d.date) })
                   .y(function(d) { return y(+d.value) })
                 svg.selectAll("myLines")
                   .data(dataReady)
@@ -141,7 +148,7 @@
                   .data(function(d){ return d.values })
                   .enter()
                   .append("circle")
-                    .attr("cx", function(d) { return x(d.time) } )
+                    .attr("cx", function(d) { return x(d.date) } )
                     .attr("cy", function(d) { return y(d.value) } )
                     .attr("r", 5)
                     .attr("stroke", "white")
@@ -154,8 +161,8 @@
                     .append('g')
                     .append("text")
                       .attr("class", function(d){ return d.name })
-                      .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; }) // keep only the last value of each time series
-                      .attr("transform", function(d) { return "translate(" + x(d.value.time) + "," + y(d.value.value) + ")"; }) // Put the text at the position of the last point
+                      .datum(function(d) { return {name: d.name, value: d.values[d.values.length - 1]}; }) // keep only the last value of each date series
+                      .attr("transform", function(d) { return "translate(" + x(d.value.date) + "," + y(d.value.value) + ")"; }) // Put the text at the position of the last point
                       .attr("x", 12) // shift the text a bit more right
                       .text(function(d) { return d.name; })
                       .style("fill", function(d){ return myColor(d.name) })

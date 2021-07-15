@@ -1,53 +1,57 @@
-<html>
-<script src='https://d3js.org/d3.v5.min.js'></script>
-<style> circle {fill: lightblue; stroke: black;} </style>
-<body onload='init()'>
-<svg width=300 height=300>
-</svg>
-<script>
-async function init() {
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>Dynamic Annotations in a Visualization Stepper</title>
+  <meta name="author" content="Jim Vallandingham">
+  <meta name="description" content="">
 
-    d3.csv("https://flunky.github.io/cars2017.csv")
-      .then(function (csv_data) {
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/stepper.css">
 
-            var x = d3.scaleLog()
-                  .domain([10, 150])
-                  .range([200, 0])
-                  .base(10);
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
-            var y = d3.scaleLog()
-                  .domain([10, 150])
-                  .range([0, 200])
-                  .base(10);
-
-            mysvg = d3.select("svg");
-
-            mysvg.append("g")
-                  .attr("transform", "translate(50,50)")
-                  .selectAll("circle").data(csv_data).enter().append("circle")
-                  .attr("cx", function (d) { return 200 - x(d.AverageCityMPG); })
-                  .attr("cy", function (d) { return 200 - y(d.AverageHighwayMPG); })
-                  .attr("r", function (d) { return 2 + parseInt(d.EngineCylinders); });
-
-
-            mysvg.append("g").attr("transform", "translate(50,50)")
-                  .attr("fill", "none")
-                  .attr("font-size", "10")
-                  .attr("font-family", "sans-serif")
-                  .attr("text-anchor", "end")
-                  .call(d3.axisLeft().scale(x).tickValues([10, 20, 50, 100]).tickFormat(function (d) { return d3.format("~s")(d); }));
-
-
-            mysvg.append("g").attr("transform", "translate(50,250)")
-                  .attr("fill", "none")
-                  .attr("font-size", "10")
-                  .attr("font-family", "sans-serif")
-                  .attr("text-anchor", "middle")
-                  .call(d3.axisBottom().scale(y).tickValues([10, 20, 50, 100]).tickFormat(function (d) { return d3.format("~s")(d); }));
-
-      });
-
-}
-</script>
+  <script src="js/stepper.js"></script>
+</head>
+<body>
+  <div id="container">
+    <h1>Dynamic Annotations in a Visualization Stepper</h1>
+    <h2 class="subtitle">Example of using jQuery to switch between annotations for different steps of a visualization</h2>
+    <div id="vis-nav">
+      <a href="#" id="step1" class="step-link active">Step1</a>
+      <a href="#" id="step2" class="step-link">Step2</a>
+      <a href="#" id="step3" class="step-link">Step3</a>
+    </div>
+    <div id="vis-container">
+      <div id="annotation-steps">
+        <div class="annotation-step" id="step1-annotation" style="display:block;">
+          <div class="annotation" id="step1-left-annotation" >
+            <h4>Left Annotation Title</h4>
+            <p>Here is the annotation text for the <strong>left</strong> annotation of step 1</p>
+          </div>
+          <div class="annotation" id="step1-right-annotation" >
+            <h4>Right Annotation Title</h4>
+            <p>Here is the annotation text for the <strong>right</strong> annotation of step 1</p>
+          </div>
+        </div>
+        <div class="annotation-step" id="step2-annotation">
+          <div class="annotation" id="step2-center-annotation" >
+            <h4>Center Annotation Title</h4>
+            <p>Here is the annotation text for the center annotation of step 2.<br/> 
+              We are using absolute positioning of these divs</p>
+          </div>
+        </div>
+        <div class="annotation-step" id="step3-annotation">
+          <div class="annotation" id="step3-high-annotation" >
+            <h4>High Annotation Title</h4>
+            <p>This is text up high.</p>
+          </div>
+          <div class="annotation" id="step3-low-annotation" >
+            <h4>Low Annotation Title</h4>
+            <p>This is text down low.</p>
+          </div>
+        </div>
+      </div>
+      <div id="vis-canvas"></div>
+    </div>
+  </div>
 </body>
-</html>

@@ -2,12 +2,23 @@
 <!-- Narrative Visualization Project.html -->
 <!-- Author: Jiayu Peng -->
 
+
 <!doctype html>
+<html lang="en" class="h-100">
 
 <head>
   <meta charset="utf-8">
   <title>Covid-19 Cases Data Analysis for USA and India</title>
   <meta name="description" content="Covid-19 Cases Study">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+  <meta name="generator" content="Hugo 0.84.0">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/stepper.css">
@@ -92,7 +103,7 @@
 
         // Add Y axis
         var y = d3.scaleLinear()
-          .domain([0, 3000000])
+          .domain([2000, 2800000])
           .range([height, 0]);
         svg.append("g")
           .call(d3.axisLeft(y));
@@ -127,7 +138,7 @@
         // Three function that change the tooltip when user hover / move / leave a cell
         var mouseover = function (d) {
           Tooltip
-            .style("opacity", 1) 
+            .style("opacity", 0.6)
         }
         var mousemove = function (d) {
           Tooltip
@@ -157,7 +168,7 @@
           .append("circle")
           .attr("cx", function (d) { return x(d.date) })
           .attr("cy", function (d) { return y(d.value) })
-          .attr("r", 3)
+          .attr("r", 2)
           .attr("stroke", "white")
           .on("mouseover", mouseover)
           .on("mousemove", mousemove)
@@ -243,50 +254,107 @@
       updateD3View('India', 0);
     });
   </script>
+
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+  </style>
 </head>
 
-<body>
-  <div id="container">
-    <h1>Covid-19 Cases Data Analysis for USA and India</h1>
-    <h2 class="subtitle">Example of using jQuery to switch between annotations for different steps of a visualization
-    </h2>
-    <div id="vis-nav">
-      <a href="#" id="step1" class="step-link active">Step1</a>
-      <a href="#" id="step2" class="step-link">Step2</a>
-      <a href="#" id="step3" class="step-link">Step3</a>
-    </div>
-    <div id="vis-container">
-      <div id="annotation-steps">
-        <div class="annotation-step" id="step1-annotation" style="display:block;">
-          <div class="annotation" id="step1-left-annotation">
-            <h4>Left Annotation Title</h4>
-            <p>Here is the annotation text for the <strong>left</strong> annotation of step 1</p>
-          </div>
-          <div class="annotation" id="step1-right-annotation">
-            <h4>Right Annotation Title</h4>
-            <p>Here is the annotation text for the <strong>right</strong> annotation of step 1</p>
-          </div>
+<body class="d-flex flex-column h-100">
+
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Fixed navbar</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Link</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
         </div>
-        <div class="annotation-step" id="step2-annotation">
-          <div class="annotation" id="step2-center-annotation">
-            <h4>Center Annotation Title</h4>
-            <p>Here is the annotation text for the center annotation of step 2.<br />
-              We are using absolute positioning of these divs</p>
-          </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Begin page content -->
+  <main class="flex-shrink-0">
+    <div class="container">
+      <div id="container">
+        <h1 class="mt-5">Covid-19 Cases Data Analysis for US, UK and India</h1>
+        <h2 class="subtitle">Example of using jQuery to switch between annotations for different steps of a
+          visualization
+        </h2>
+        <div id="vis-nav">
+          <a href="#" id="step1" class="step-link active">Step1</a>
+          <a href="#" id="step2" class="step-link">Step2</a>
+          <a href="#" id="step3" class="step-link">Step3</a>
         </div>
-        <div class="annotation-step" id="step3-annotation">
-          <div class="annotation" id="step3-high-annotation">
-            <h4>High Annotation Title</h4>
-            <p>This is text up high.</p>
+        <div id="vis-container">
+          <div id="annotation-steps">
+            <div class="annotation-step" id="step1-annotation" style="display:block;">
+              <div class="annotation" id="step1-left-annotation">
+                <h4>Left Annotation Title</h4>
+                <p>Here is the annotation text for the <strong>left</strong> annotation of step 1</p>
+              </div>
+              <div class="annotation" id="step1-right-annotation">
+                <h4>Right Annotation Title</h4>
+                <p>Here is the annotation text for the <strong>right</strong> annotation of step 1</p>
+              </div>
+            </div>
+            <div class="annotation-step" id="step2-annotation">
+              <div class="annotation" id="step2-center-annotation">
+                <h4>Center Annotation Title</h4>
+                <p>Here is the annotation text for the center annotation of step 2.<br />
+                  We are using absolute positioning of these divs</p>
+              </div>
+            </div>
+            <div class="annotation-step" id="step3-annotation">
+              <div class="annotation" id="step3-high-annotation">
+                <h4>High Annotation Title</h4>
+                <p>This is text up high.</p>
+              </div>
+              <div class="annotation" id="step3-low-annotation">
+                <h4>Low Annotation Title</h4>
+                <p>This is text down low.</p>
+              </div>
+            </div>
           </div>
-          <div class="annotation" id="step3-low-annotation">
-            <h4>Low Annotation Title</h4>
-            <p>This is text down low.</p>
+          <div id="vis-canvas">
           </div>
         </div>
       </div>
-      <div id="vis-canvas">
-      </div>
     </div>
-  </div>
+  </main>
+
+  <footer class="footer mt-auto py-3 bg-light">
+    <div class="container">
+      <span class="text-muted">Place sticky footer content here.</span>
+    </div>
+  </footer>
+
 </body>
+</html>

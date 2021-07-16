@@ -58,6 +58,10 @@ a.step-link:hover, a.active {
   z-index: 10;
   overflow: hidden;
   background-color: #eee;
+
+  .div {
+    position: absolute;
+  }
 }
 
 /* By default, all annotation-steps are hidden. */
@@ -103,4 +107,20 @@ a.step-link:hover, a.active {
   width: 200px;
 }
 
+/* -------------------- TOOLTIP ------------------ */
+
+.data-tooltip{
+  color: black;
+  background-color: white;
+  background: white;
+  align-content: center;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.tooltip.show {
+    opacity: 1;
+    background-color: white;
+    border: green;
+}
 

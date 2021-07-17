@@ -1,6 +1,7 @@
 <!-- CS498 : Summer 2021 -->
 <!-- Narrative Visualization Project.html -->
 <!-- Author: Jiayu Peng -->
+<!-- Email: Jiayup4@illinois.edu -->
 
 
 <!doctype html>
@@ -8,7 +9,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Covid-19 Cases Data Analysis for US, UK and India</title>
+  <title>Covid-19 Cases Analysis for US, UK and India</title>
   <meta name="description" content="Covid-19 Cases Study">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,10 +24,14 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/stepper.css">
 
+  <!-- add a reference to the external stylesheet -->
+  <!-- choose Cerulean Theme -->
+  <link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
   <script src="https://d3js.org/d3.v4.js"></script>
 
-  <!-- Color Scale -->
   <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 
   <script>
@@ -66,7 +71,7 @@
 
         // List of groups (here I have one group per column)
         var allGroup = ["United States", "United Kingdom", "India"]
-        var allGroupLen = [0, 100, 120, 70];
+        var allGroupLen = [0, 120, 140, 70];
 
         // Reformat the data: we need an array of arrays of {x, y} tuples
         var dataReady = allGroup.map(function (grpName) { // .map allows to do something for each element of the list
@@ -83,7 +88,7 @@
         // A color scale: one color for each group
         var myColor = d3.scaleOrdinal()
           .domain(allGroup)
-          .range(d3.schemeSet2);
+          .range(d3.schemeSet1);
 
         // Add X axis --> it is a date format
         var x = d3.scaleTime()
@@ -188,7 +193,7 @@
           .attr("x", 12) // shift the text a bit more right
           .text(function (d) { return d.name; })
           .style("fill", function (d) { return myColor(d.name) })
-          .style("font-size", 15)
+          .style("font-size", 14)
 
         // Add a legend (interactive)
         svg
@@ -209,7 +214,7 @@
           .attr('y', 30)
           .text(function (d) { return d.name; })
           .style("fill", function (d) { return myColor(d.name) })
-          .style("font-size", 15)
+          .style("font-size", 18)
           .on("click", function (d) {
             // is the element currently visible ?
             currentOpacity = d3.selectAll("." + d.name.replace(/\s/g, '')).style("opacity");
@@ -270,32 +275,31 @@
       }
     }
   </style>
+
 </head>
 
 <body class="d-flex flex-column h-100">
 
   <header>
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Fixed navbar</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-          aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-        </div>
+    <!-- START -- Add HTML code for the top menu section (navigation bar)-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="">Final Project</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02"
+        aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarColor02">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="d3.html">Visualization</a>
+          </li>
+        </ul>
       </div>
     </nav>
   </header>
@@ -304,42 +308,58 @@
   <main class="flex-shrink-0">
     <div class="container">
       <div id="container">
-        <h1 class="mt-5">Covid-19 Cases Data Analysis for US, UK and India</h1>
-        <h2 class="subtitle">Example of using jQuery to switch between annotations for different steps of a
-          visualization
+        <h1 class="mt-5">Covid-19 Cases Analysis for US, UK and India</h1>
+        <h2 class="subtitle"> The Covid-19 Data was update by OurWorldinData.org on 7/14/2021.<br>
+          <br>
         </h2>
+
         <div id="vis-nav">
-          <a href="#" id="step1" class="step-link active">Step1</a>
-          <a href="#" id="step2" class="step-link">Step2</a>
-          <a href="#" id="step3" class="step-link">Step3</a>
+          <a href="#" id="step1" class="step-link active">Cases for US and UK</a>
+          <a href="#" id="step2" class="step-link">Cases for US and India</a>
+          <a href="#" id="step3" class="step-link">Cases for US, UK and India</a>
+          <br>
+          <br>
+
         </div>
         <div id="vis-container">
           <div id="annotation-steps">
             <div class="annotation-step" id="step1-annotation" style="display:block;">
               <div class="annotation" id="step1-left-annotation">
-                <h4>Left Annotation Title</h4>
-                <p>Here is the annotation text for the <strong>left</strong> annotation of step 1</p>
+                <h4>Jan-2021 Peak</h4>
+                <p>US and UK reached a <strong>highest</strong> peak for positivite Covid-19 cases confirm on the nearest 01/11/2021.<br/>From this point, we can find the correlation between US and UK cases were on the rise.</p>
               </div>
               <div class="annotation" id="step1-right-annotation">
-                <h4>Right Annotation Title</h4>
-                <p>Here is the annotation text for the <strong>right</strong> annotation of step 1</p>
+                <h5>Hover your Cursor over the point to get accuracy data</h5>
+                <p>You can see the Date and 7-day Average Case for each country</p>
+              </div>
+              <div class="annotation" id="step1-top-annotation">
+                <p>You can Click the Country Name <br/>
+                  to check the data below</p>
               </div>
             </div>
             <div class="annotation-step" id="step2-annotation">
               <div class="annotation" id="step2-center-annotation">
-                <h4>Center Annotation Title</h4>
-                <p>Here is the annotation text for the center annotation of step 2.<br />
-                  We are using absolute positioning of these divs</p>
+                <h4>May-2021 Delta Variant</h4>
+                <p>The Delta Variant spread rapidly in India and reached a peak in May, 2021.<br />
+                  The highest peak of new confirmed cases in India was <strong> 1.5 times </strong>of the US highest peak in 2020.</p>
+              </div>
+              <div class="annotation" id="step2-top-annotation">
+                <p>You can Click the Country Name <br/>
+                  to check the data below</p>
               </div>
             </div>
             <div class="annotation-step" id="step3-annotation">
               <div class="annotation" id="step3-high-annotation">
-                <h4>High Annotation Title</h4>
-                <p>This is text up high.</p>
+                <h4>After the pandemic</h4>
+                <p>Since more people started to have vaccined, the 7-day Average Cases<strong> dropped </strong>obviously for US, UK and India.</p>
               </div>
-              <div class="annotation" id="step3-low-annotation">
+              <!-- <div class="annotation" id="step3-low-annotation">
                 <h4>Low Annotation Title</h4>
                 <p>This is text down low.</p>
+              </div> -->
+              <div class="annotation" id="step3-top-annotation">
+                <p>You can Click the Country Name <br/>
+                  to check the data below</p>
               </div>
             </div>
           </div>
@@ -352,9 +372,13 @@
 
   <footer class="footer mt-auto py-3 bg-light">
     <div class="container">
-      <span class="text-muted">Place sticky footer content here.</span>
+      <span class="text-muted">University of Illinois Urbana-Champaign CS 416 Data Visualization
+        <br>Author: Jiayu Peng<br/>
+         Email: Jiayup4@illinois.edu</br>
+      </span>
     </div>
   </footer>
 
 </body>
+
 </html>

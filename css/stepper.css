@@ -224,11 +224,20 @@ a.step-link:hover, a.active {
   
 }
 
-#wpcom-comments-date span, #wpcom-comments-date a {
+.post-meta-top .post-author-name, .post-meta-top .time {
+  position: relative;
+  top: 0.25em;
+  font-size: 1.0em;
+  line-height: 1.6em;
+  margin-bottom: 1.6em;
+  color: #87a6bc;
+  text-align: left;
+}
+
+#wpcom-comments-date div, #wpcom-comments-date a {
   font-size: 14px;
   color: #87a6bc;
-  margin-right: 100px;
-  /* margin-left: 10%; */
+  text-align: left;
 }
 
 #jp-relatedposts {
@@ -237,3 +246,12 @@ a.step-link:hover, a.active {
   padding-top: 30px !important;
   border-top: 1px solid rgba(200, 215, 225, 0.5);
 }
+
+.post-meta-top .avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  float: left;
+  margin-right: 12px;
+}
+

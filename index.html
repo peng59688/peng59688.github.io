@@ -81,10 +81,13 @@
         <h2 class="post-title"><a><br />Covid-19 Cases Analysis for US, UK and India</a></h2>
         <div class="entry">
           <p>This is a narrative visualization implementing by the D3 library in JavaScript and the interactive
-            slideshow of one effective narrative visualization structures. The dataset is using latest (7/14/2021)
+            slide show of one effective narrative visualization structures. The dataset is using latest (7/14/2021)
 
             Covid-19 Dataset provided by <a
-              href="https://ourworldindata.org/coronavirus-source-data">OurWorldInData.Org</a>.</p>
+              href="https://ourworldindata.org/coronavirus-source-data">OurWorldInData.Org</a>. Right now, people are
+            worried about the Delta variant of Covid-19 spreading. This is project to find the spreading pattern of the
+            situation of the Covid-19 cases in the United States, United
+            Kingdom, and India. <br /></p>
         </div>
 
 
@@ -93,9 +96,10 @@
           <img alt=''
             src='https://lh3.googleusercontent.com/a-/AOh14GjOVaCvLesH0NSlKoseDZWfJt4E1Dk2DA8dNHSk=s288-p-rw-no'
             class='avatar avatar-64' height='64' width='64' />
-          <p class="post-author-name">Jiayu Peng</p>
+          <div class="post-author-name">Jiayu Peng
+          </div>
           <div id="wpcom-comments-date">
-            <span class="date"><svg class="icon icon-clock" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            <div class="date"><svg class="icon icon-clock" version="1.1" xmlns="http://www.w3.org/2000/svg"
                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24"
                 style="enable-background:new 0 0 24 24;" xml:space="preserve">
                 <g id="time">
@@ -103,76 +107,91 @@
                     d="M12,4c4.411,0,8,3.589,8,8s-3.589,8-8,8s-8-3.589-8-8S7.589,4,12,4 M12,2C6.477,2,2,6.477,2,12s4.477,10,10,10 s10-4.477,10-10S17.523,2,12,2L12,2z M15.8,15.4L13,11.667V7h-2v5.333l3.2,4.266L15.8,15.4z" />
                 </g>
                 <g id="Layer_1"></g>
-              </svg>July 16, 2021</span>
+              </svg>July 16, 2021</div>
           </div>
         </div>
         <div class="entrytext">
           <h3>Messaging</h3>
-          <p>WordPress.com experts invite you to join our community-driven courses to get your blog or podcast
-            started, launched, or taken to the next level. Join today for on-demand content, access to a course
-            community of peers, weekly office hours with our dedicated experts, and virtual meet-ups to connect with
-            other learners like you. Start learning <a href="https://wordpress.com/courses/">here</a>. </p>
+          <p>
+            I use narrative visualization to better present the data changed among those three
+            countries' covid-19 cases comparison. The narrative visualization helps reseachers to find out the pattern
+            of the virus spreading and the spreading speed among these countries. The general idea that I present is the
+            correlation between the timeline and the 7-day average cases from United States, United Kingdom and India,
+            from Jan, 2020 to Jul, 2021.
 
+          </p>
 
           <h3>Narrative Structure</h3>
-          <p>Overheard on our Blogging for Beginners Course Community: &#8220;<em>Taking this course has pushed me to
-              think beyond my comfort zone and take a step back in my journey to become a better blogger and focus on
-              what I truly want to write about.</em>&#8221; </p>
+          <p>I choose an <strong>interactive slideshow</strong> to present this data visualization. On the navigation
+            bar, click the Visualization tab, then it directs to my visualization page.<br /> Under the header, there
+            are three tabs and each tab can show a scene of the country-to-country comparison in Covid-19 cases. Each
+            scene focuses on the different topics of the story. <strong>Besides</strong>, I made the feature that users
+            can freely pick up the <strong>country</strong> name to see the data from that country. That gives users the
+            opportunity to explore the scene. <strong>Moreover</strong>, I add the features such as
+            <strong>tooltip</strong> and <strong>interactive legend</strong>.
+          </p>
         </div>
 
         <h3>Visual Structure</h3>
-        <p>Overheard on our Blogging for Beginners Course Community: &#8220;<em>Taking this course has pushed me to
-            think beyond my comfort zone and take a step back in my journey to become a better blogger and focus on
-            what I truly want to write about.</em>&#8221; </p>
+        <p><strong>Firstly</strong>, I use connected scatterplot as my scenes to present the Covid-19 cases data.
+          <strong>Scecondly</strong>, for each line on the scatterplot is represented a country's data, and I add a
+          feature that can hide or show the line. That can help the users to select their interested country data.
+          <strong>Thirdly</strong>, I use a dynamic visualization in annotations and sctterplot chart, which much
+          improved the user experience in explore the story.
+        </p>
 
 
         <h3>Scenes</h3>
-        <p>Overheard on our Blogging for Beginners Course Community: &#8220;<em>Taking this course has pushed me to
-            think beyond my comfort zone and take a step back in my journey to become a better blogger and focus on
-            what I truly want to write about.</em>&#8221; </p>
+        <p>There are three scenes. The <strong> scene</strong>is the cases comparison between United States and United
+          Kingdom, which can reflected the difference in cases number and peak value between US and UK. We can see the
+          obvious difference that US had much higher peak than UK. However, we can see the peak date is very closed for
+          the two countries. The <strong>second</strong> scene is about the comparison between United States and India,
+          because this scene can better show the Delta variant impact on India, even US got higher peak than UK,
+          however, the India peak was 1.5 times than US. That can prove that the Delta variant has extremely infectious.
+          The <strong>last</strong> scene is about the after pandemic, three countries' comparison, which show the
+          vaccination great impact. </p>
 
 
         <h3>Annotations</h3>
-        <p>Overheard on our Blogging for Beginners Course Community: &#8220;<em>Taking this course has pushed me to
-            think beyond my comfort zone and take a step back in my journey to become a better blogger and focus on
-            what I truly want to write about.</em>&#8221; </p>
+        <p> I use the annotation class to manage all the annotations in different scenes in the stepper.css file, I
+          design the color, margin, font-size to modify those annotations in the similar style, that can be considered
+          as the "format". I think the advantage of the format is better to read and easy to recongonize without any
+          confuse. Yes, the annotation is used to support the messaging, the annotations points out the feature of each
+          scene and help users to figure out the story path. The annotation can be changed in different steppers.
+          Because each stepper has different topics.</p>
 
 
         <h3>Parameters</h3>
-        <p>Overheard on our Blogging for Beginners Course Community: &#8220;<em>Taking this course has pushed me to
-            think beyond my comfort zone and take a step back in my journey to become a better blogger and focus on
-            what I truly want to write about.</em>&#8221; </p>
+        <p> There are several parameters in the narrative visualiztion, they are the country parameter and the date
+          parameter. The 7-day average variable is the states and controlled by the country parameter and date
+          parameter.<br />
+
+          Firstly, the scatterplot is presented by the country parameter and the date parameter. Secondly, when the
+          scene parameter changed, country parameter will make the related the states of cases changeded
+          simultaneously. Thirdly, there is interactive legend feature. when the country name filter is selected, the
+          states value can be hidden or shown up in the scene.
+        </p>
 
 
         <h3>Triggers</h3>
-        <p>Overheard on our Blogging for Beginners Course Community: &#8220;<em>Taking this course has pushed me to
-            think beyond my comfort zone and take a step back in my journey to become a better blogger and focus on
-            what I truly want to write about.</em>&#8221; </p>
+        <p>For the triggers that connect user actions to changes of state in the narrative visualization, there are 3
+          different ways: the stepper of each scene, the interactive legend and the tooltip.<br />
+          The user can choose either to hover the cursor to the any datapoint, or changed the scene parameter to get the
+          exploration for the story, or use interactive legend to choose any country interested in. </p>
       </div>
 
       <div id='jp-relatedposts' class='jp-relatedposts'>
-        <h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+        <h3 class="jp-relatedposts-headline"><em>Related Sources</em></h3>
       </div>
-    </div>
-    </div>
-    <div id="entry-side">
-      <ul id="post-meta">
-          </svg><a href="https://wordpress.com/blog/category/admin-bar/" rel="category tag">Admin Bar</a>, <a
-            href="https://wordpress.com/blog/category/better-blogging/" rel="category tag">Better Blogging</a>, <a
-            href="https://wordpress.com/blog/category/community/" rel="category tag">Community</a>, <a
-            href="https://wordpress.com/blog/category/wordpresscom/" rel="category tag">WordPress.com</a></li>
 
-            
-          </svg><a href="https://wordpress.com/blog/tag/blogging/" rel="tag">blogging</a>, <a
-            href="https://wordpress.com/blog/tag/community/" rel="tag">Community</a>, <a
-            href="https://wordpress.com/blog/tag/podcasting/" rel="tag">podcasting</a>, <a
-            href="https://wordpress.com/blog/tag/wordpress/" rel="tag">WordPress</a>, <a
-            href="https://wordpress.com/blog/tag/wordpresscom/" rel="tag">WordPress.com</a></li>
-      </ul>
-
-      
-    </div>
-    <div id="entry-comments">
+      <div id="entry-side">
+        <ul id="post-meta">
+          </svg><a href="https://ourworldindata.org/coronavirus-source-data" rel="category tag">Covid-19 DateSource</a>,
+          <a href="https://www.d3-graph-gallery.com/connectedscatter.html" rel="category tag">D3 Graph Gallery</a>, 
+          <a href="https://bootswatch.com/" rel="category tag">Themes</a>, 
+          <a href="https://getbootstrap.com/docs/5.0/examples/" rel="category tag">Navigation Bar</a></li>
+        </ul>
+      </div>
     </div>
   </main>
 

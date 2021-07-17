@@ -113,11 +113,11 @@
         <div class="entrytext">
           <h3>Messaging</h3>
           <p>
-            I use narrative visualization to better present the data changed among those three
-            countries' covid-19 cases comparison. The narrative visualization helps reseachers to find out the pattern
-            of the virus spreading and the spreading speed among these countries. The general idea that I present is the
-            correlation between the timeline and the 7-day average cases from United States, United Kingdom and India,
-            from Jan, 2020 to Jul, 2021.
+            I use narrative visualization to better present the data changed among those three countries' covid-19 cases
+            comparison. The narrative visualization helps researchers to find out the pattern of the virus spreading and
+            the spreading speed among these countries. The general idea that I present is the correlation between the
+            timeline and the 7-day average cases from United States, United Kingdom and India, from Jan, 2020 to Jul,
+            2021.
 
           </p>
 
@@ -134,15 +134,16 @@
 
         <h3>Visual Structure</h3>
         <p><strong>Firstly</strong>, I use connected scatterplot as my scenes to present the Covid-19 cases data.
-          <strong>Scecondly</strong>, for each line on the scatterplot is represented a country's data, and I add a
+          <strong>Secondly</strong>, for each line on the scatterplot is represented a country's data, and I add a
           feature that can hide or show the line. That can help the users to select their interested country data.
-          <strong>Thirdly</strong>, I use a dynamic visualization in annotations and sctterplot chart, which much
+          <strong>Thirdly</strong>, I use a dynamic visualization in annotations and scatterplot chart, which much
           improved the user experience in explore the story.
         </p>
 
 
         <h3>Scenes</h3>
-        <p>There are three scenes. The <strong> scene</strong>is the cases comparison between United States and United
+        <p>There are three scenes. The <strong> first</strong> scene is the cases comparison between United States and
+          United
           Kingdom, which can reflected the difference in cases number and peak value between US and UK. We can see the
           obvious difference that US had much higher peak than UK. However, we can see the peak date is very closed for
           the two countries. The <strong>second</strong> scene is about the comparison between United States and India,
@@ -155,20 +156,19 @@
         <h3>Annotations</h3>
         <p> I use the annotation class to manage all the annotations in different scenes in the stepper.css file, I
           design the color, margin, font-size to modify those annotations in the similar style, that can be considered
-          as the "format". I think the advantage of the format is better to read and easy to recongonize without any
+          as the "format". I think the advantage of the format is better to read and easy to recognize without any
           confuse. Yes, the annotation is used to support the messaging, the annotations points out the feature of each
           scene and help users to figure out the story path. The annotation can be changed in different steppers.
           Because each stepper has different topics.</p>
 
 
         <h3>Parameters</h3>
-        <p> There are several parameters in the narrative visualiztion, they are the country parameter and the date
+        <p> There are several parameters in the narrative visualization, they are the country parameter and the date
           parameter. The 7-day average variable is the states and controlled by the country parameter and date
           parameter.<br />
 
           Firstly, the scatterplot is presented by the country parameter and the date parameter. Secondly, when the
-          scene parameter changed, country parameter will make the related the states of cases changeded
-          simultaneously. Thirdly, there is interactive legend feature. when the country name filter is selected, the
+          scene parameter changed, country parameter will make the related the states of cases changed      simultaneously. Thirdly, there is interactive legend feature. when the country name filter is selected, the
           states value can be hidden or shown up in the scene.
         </p>
 
@@ -178,21 +178,24 @@
           different ways: the stepper of each scene, the interactive legend and the tooltip.<br />
           The user can choose either to hover the cursor to the any datapoint, or changed the scene parameter to get the
           exploration for the story, or use interactive legend to choose any country interested in. </p>
-      </div>
 
-      <div id='jp-relatedposts' class='jp-relatedposts'>
-        <h3 class="jp-relatedposts-headline"><em>Related Sources</em></h3>
-      </div>
+        <h3>Click the interactive <a href="d3.html">slideshow</a> to start!</h3>
 
-      <div id="entry-side">
-        <ul id="post-meta">
-          </svg><a href="https://ourworldindata.org/coronavirus-source-data" rel="category tag">Covid-19 DateSource</a>,
-          <a href="https://www.d3-graph-gallery.com/connectedscatter.html" rel="category tag">D3 Graph Gallery</a>, 
-          <a href="https://bootswatch.com/" rel="category tag">Themes</a>, 
-          <a href="https://getbootstrap.com/docs/5.0/examples/" rel="category tag">Navigation Bar</a></li>
-        </ul>
+
+        <div id='jp-relatedposts' class='jp-relatedposts'>
+          <h3 class="jp-relatedposts-headline"><em>Related Sources</em></h3>
+        </div>
+
+        <div id="entry-side">
+          <ul id="post-meta">
+            </svg><a href="https://ourworldindata.org/coronavirus-source-data" rel="category tag">Covid-19
+              DateSource</a>,
+            <a href="https://www.d3-graph-gallery.com/connectedscatter.html" rel="category tag">D3 Graph Gallery</a>,
+            <a href="https://bootswatch.com/" rel="category tag">Themes</a>,
+            <a href="https://getbootstrap.com/docs/5.0/examples/" rel="category tag">Navigation Bar</a></li>
+          </ul>
+        </div>
       </div>
-    </div>
   </main>
 
 

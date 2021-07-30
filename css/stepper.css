@@ -100,8 +100,8 @@ a.step-link:hover, a.active {
 }
  
 #step1-right-annotation {
-  left: 680px;
-  top: 250px;
+  left: 700px;
+  top: 270px;
   width:270px;
 
   /* color: rgb(58, 53, 53);
@@ -135,9 +135,9 @@ a.step-link:hover, a.active {
 }
 
 #step2-center-annotation {
-  left: 750px;
-  top: 10px;
-  width: 180px;
+  left: 210px;
+  top: 190px;
+  width: 240px;
 
   color: #842029;
   background-color: #f7e1e2;
@@ -161,7 +161,7 @@ a.step-link:hover, a.active {
 }
 
 #step3-high-annotation {
-  left: 160px;
+  left: 120px;
   top: 220px;
   width: 320px;
 
